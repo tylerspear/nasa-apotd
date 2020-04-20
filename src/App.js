@@ -8,7 +8,16 @@ class App extends Component {
   state = {
     date: "",
     image: ""
-  } 
+  }
+  
+  componentDidMount() {
+    //pass in API key
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=VvmpAJToKHWicld7I7gv2WJ0QxzhRBCh6PBfd9rY`)
+      //convert response to JSON
+      .then(res => res.json())
+      //update state with the photo object we returned
+      .then(res => this.setState({ image: res }))
+  }
 
   changeDate = (e) => {
     //prevent default on form submit
@@ -25,7 +34,8 @@ class App extends Component {
         <h1>NASA Image of the Day</h1>
         {/*pass changeDate function to the DateInput component*/}
         <DateInput changeDate={this.changeDate} />
-        <Photo />
+        {/* pass image object down to the photo component */}
+        <Photo image={this.state.image}/>
       </div>
     )
   }
