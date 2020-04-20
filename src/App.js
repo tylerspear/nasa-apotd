@@ -43,6 +43,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <img className="logo" src="https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png" />
         <h1 className="header">NASA Image of the Day</h1>
         {/*pass changeDate function to the DateInput component*/}
         <DateInput changeDate={this.changeDate} />
