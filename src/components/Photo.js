@@ -2,17 +2,17 @@ import React from 'react'
 
 const Photo = (props) => {
     //check if the media type is an image or videa
-    const mediaType = props.image.media_type
+    const mediaType = props.imageData.media_type
     let mediaEmbed
     
     //if media type is an image
     if(mediaType === "image") {
-        mediaEmbed = <img src={props.image.url} />
+        mediaEmbed = <img src={props.imageData.url} />
     }
     //if media type is a video
     else if (mediaType === "video") {
         mediaEmbed = 
-            <iframe src={props.image.url}
+            <iframe src={props.imageData.url}
             frameBorder='0'
             allow='autoplay; encrypted-media'
             allowFullScreen
@@ -24,10 +24,11 @@ const Photo = (props) => {
     }
 
     return (
-        <div>
+        <div className="image-container">
             {/* grab the props from photo object stored in state */}
-            <h3>{props.image.title}</h3>
+            <h3 className="image-title">{props.imageData.title}</h3>
             {mediaEmbed}
+            <p className="image-caption">{props.imageData.explanation}</p>
         </div>
     )
 }
